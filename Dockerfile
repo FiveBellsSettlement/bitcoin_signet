@@ -1,4 +1,4 @@
-FROM debian:buster-slim as builder
+FROM debian:bookworm-slim as builder
 
 ARG BITCOIN_VERSION=${BITCOIN_VERSION:-27.0}
 
@@ -20,7 +20,7 @@ WORKDIR /tmp
    mkdir -p bin && \
    tar -xzvf "${BITCOIN_FILE}" -C /tmp/bin --strip-components=2 "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-cli" "bitcoin-${BITCOIN_VERSION}/bin/bitcoind" "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-wallet" "bitcoin-${BITCOIN_VERSION}/bin/bitcoin-util" 
      
-FROM debian:buster-slim as custom-signet-bitcoin
+FROM debian:bookworm-slim as custom-signet-bitcoin
 
 LABEL org.opencontainers.image.authors="NBD"
 LABEL org.opencontainers.image.licenses=MIT
